@@ -7,4 +7,8 @@ def response_json(resource:, action:)
   File.read(path)
 end
 
+AfterbanksPSD2.configure do |config|
+  config.servicekey = 'a_servicekey_which_works'
+end
+
 WebMock.disable_net_connect!

@@ -51,6 +51,12 @@ module AfterbanksPSD2
       case type
       when :boolean
         [true, "1", 1].include?(raw_value)
+      when :date
+        if raw_value.is_a?(Date)
+          raw_value
+        else
+          Date.parse(raw_value)
+        end
       else
         raw_value
       end
