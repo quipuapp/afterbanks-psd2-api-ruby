@@ -6,7 +6,21 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    diff-lcs (1.3)
     rake (13.0.3)
+    rspec (3.7.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+    rspec-core (3.7.0)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.0)
 
 PLATFORMS
   ruby
@@ -15,6 +29,7 @@ DEPENDENCIES
   afterbanks-psd2-api-ruby!
   bundler
   rake
+  rspec
 
 BUNDLED WITH
    2.1.4
