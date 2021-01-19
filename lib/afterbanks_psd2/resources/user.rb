@@ -16,7 +16,8 @@ module AfterbanksPSD2
       )
 
       Response.new(
-        result: new(response)
+        result: new(response),
+        debug_id: debug_id
       )
     end
   end

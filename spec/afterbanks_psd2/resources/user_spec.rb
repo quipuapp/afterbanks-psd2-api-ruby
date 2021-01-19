@@ -11,7 +11,8 @@ describe AfterbanksPSD2::User do
         ).
         to_return(
           status: 200,
-          body: response_json(resource: 'user', action: 'get')
+          body: response_json(resource: 'user', action: 'get'),
+          headers: { debug_id: 'usrget1234' }
         )
     end
 
@@ -19,6 +20,7 @@ describe AfterbanksPSD2::User do
       response = AfterbanksPSD2::User.get
 
       expect(response.class).to eq(AfterbanksPSD2::Response)
+      expect(response.debug_id).to eq('usrget1234')
 
       user = response.result
 

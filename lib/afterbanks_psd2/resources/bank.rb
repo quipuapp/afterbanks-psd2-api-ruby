@@ -9,7 +9,7 @@ module AfterbanksPSD2
                payments_supported: { type: :boolean, original_name: :paymentsSupported }
 
     def self.list(ordered: false, country_codes: nil)
-      response = AfterbanksPSD2.api_call(
+      response, debug_id = AfterbanksPSD2.api_call(
         method: :get,
         path: '/listOfSupportedBanks/'
       )
@@ -22,7 +22,8 @@ module AfterbanksPSD2
             country_codes: country_codes
           ),
           self
-        )
+        ),
+        debug_id: debug_id
       )
     end
 
