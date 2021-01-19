@@ -63,7 +63,7 @@ module AfterbanksPSD2
       end
 
       logger.info(
-        message:   'Afterbanks request',
+        message:   'Afterbanks PSD2 request',
         method:    method.upcase.to_s,
         url:       url,
         time:      now.to_s,

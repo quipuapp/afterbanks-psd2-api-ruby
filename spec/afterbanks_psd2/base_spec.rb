@@ -159,7 +159,7 @@ describe AfterbanksPSD2 do
           .to receive(:info)
                 .with(
                   {
-                    message:   'Afterbanks request',
+                    message:   'Afterbanks PSD2 request',
                     method:    'GET',
                     url:       'https://some.where/over/the/rainbow',
                     time:      "2020-03-24 18:47:00 +0100",
@@ -187,7 +187,7 @@ describe AfterbanksPSD2 do
             .to receive(:info)
                   .with(
                     {
-                      message:   'Afterbanks request',
+                      message:   'Afterbanks PSD2 request',
                       method:    'GET',
                       url:       'https://some.where/over/the/rainbow',
                       time:      "2020-03-24 18:47:00 +0100",
@@ -210,7 +210,7 @@ describe AfterbanksPSD2 do
             .to receive(:info)
                   .with(
                     {
-                      message:   'Afterbanks request',
+                      message:   'Afterbanks PSD2 request',
                       method:    'GET',
                       url:       'https://some.where/over/the/rainbow',
                       time:      "2020-03-24 18:47:00 +0100",
