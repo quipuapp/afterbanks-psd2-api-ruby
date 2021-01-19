@@ -1,0 +1,74 @@
+inherit_from: .rubocop_exclusions.yml
+
+AllCops:
+  DisabledByDefault: true
+  TargetRubyVersion: 2.6.6
+
+Documentation:
+  Enabled: false
+
+# Enable Bundler department
+Bundler:
+  Enabled: true
+
+# Enable lint department
+Lint:
+  Enabled: true
+
+# Enabling layout department
+Layout:
+  Enabled: true
+
+# Enabling Security department
+Security:
+  Enabled: true
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: indented_relative_to_receiver
+
+Style/CollectionMethods:
+  Enabled: true
+  PreferredMethods:
+    # inject seems more common in the community.
+    inject: "reduce"
+    collect: "map"
+
+Lint/BooleanSymbol:
+  Exclude:
+    - app/uploaders/attachment_uploader.rb
+
+Layout/BlockAlignment:
+  EnforcedStyleAlignWith: start_of_block
+
+Layout/HashAlignment:
+  AllowMultipleStyles: true
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Layout/SpaceBeforeBrackets: # (new in 1.7)
+  Enabled: true
+Lint/AmbiguousAssignment: # (new in 1.7)
+  Enabled: true
+Lint/DeprecatedConstants: # (new in 1.8)
+  Enabled: true
+Lint/DuplicateBranch: # (new in 1.3)
+  Enabled: true
+Lint/DuplicateRegexpCharacterClassElement: # (new in 1.1)
+  Enabled: true
+Lint/EmptyBlock: # (new in 1.1)
+  Enabled: true
+Lint/EmptyClass: # (new in 1.3)
+  Enabled: true
+Lint/LambdaWithoutLiteralBlock: # (new in 1.8)
+  Enabled: true
+Lint/NoReturnInBeginEndBlocks: # (new in 1.2)
+  Enabled: true
+Lint/RedundantDirGlobSort: # (new in 1.8)
+  Enabled: true
+Lint/ToEnumArguments: # (new in 1.1)
+  Enabled: true
+Lint/UnexpectedBlockArity: # (new in 1.5)
+  Enabled: true
+Lint/UnmodifiedReduceAccumulator: # (new in 1.1)
+  Enabled: true

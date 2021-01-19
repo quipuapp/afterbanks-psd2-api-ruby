@@ -3,8 +3,6 @@ require 'json'
 
 module AfterbanksPSD2
   class << self
-    attr_accessor :configuration
-
     def configuration
       @configuration ||= Configuration.new
     end
@@ -34,9 +32,9 @@ module AfterbanksPSD2
       debug_id = response.headers[:debug_id]
 
       log_request(
-        method: method,
-        url: url,
-        params: params,
+        method:   method,
+        url:      url,
+        params:   params,
         debug_id: debug_id
       )
 
@@ -65,13 +63,13 @@ module AfterbanksPSD2
       end
 
       logger.info(
-        message: 'Afterbanks request',
-        method: method.upcase.to_s,
-        url: url,
-        time: now.to_s,
+        message:   'Afterbanks request',
+        method:    method.upcase.to_s,
+        url:       url,
+        time:      now.to_s,
         timestamp: now.to_i,
-        debug_id: debug_id || 'none',
-        params: safe_params
+        debug_id:  debug_id || 'none',
+        params:    safe_params
       )
     end
   end

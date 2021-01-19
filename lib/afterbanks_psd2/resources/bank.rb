@@ -1,24 +1,24 @@
 module AfterbanksPSD2
   class Bank < Resource
-    has_fields country_code: { type: :string, original_name: :countryCode },
-               service: { type: :string },
-               swift: { type: :string },
-               fullname: { type: :string },
-               image: { type: :string },
-               image_svg: { type: :string, original_name: :imageSVG },
+    has_fields country_code:       { type: :string, original_name: :countryCode },
+               service:            { type: :string },
+               swift:              { type: :string },
+               fullname:           { type: :string },
+               image:              { type: :string },
+               image_svg:          { type: :string, original_name: :imageSVG },
                payments_supported: { type: :boolean, original_name: :paymentsSupported }
 
     def self.list(ordered: false, country_codes: nil)
       response, debug_id = AfterbanksPSD2.api_call(
         method: :get,
-        path: '/listOfSupportedBanks/'
+        path:   '/listOfSupportedBanks/'
       )
 
       Response.new(
-        result: Collection.new(
+        result:   Collection.new(
           banks_information_for(
-            response: response,
-            ordered: ordered,
+            response:      response,
+            ordered:       ordered,
             country_codes: country_codes
           ),
           self
@@ -26,8 +26,6 @@ module AfterbanksPSD2
         debug_id: debug_id
       )
     end
-
-    private
 
     def self.banks_information_for(response:, ordered:, country_codes:)
       country_codes = country_codes.map(&:upcase) unless country_codes.nil?
@@ -44,7 +42,7 @@ module AfterbanksPSD2
         next if country_codes && !country_codes.include?(bank_information['countryCode'])
 
         bank_information['fullname'] = bank_name_for(
-          bank_information: bank_information,
+          bank_information:           bank_information,
           services_number_by_bank_id: services_number_by_bank_id
         )
 
@@ -67,7 +65,7 @@ module AfterbanksPSD2
       # 3. Rename Caixa Guisona into Caixa Guissona (fix typo)
       # 4. Rename Caixa burriana into Caixa Burriana (fix typo)
 
-      if special_name = special_name_for_service(service: bank_information['service'])
+      if (special_name = special_name_for_service(service: bank_information['service']))
         return special_name
       end
 

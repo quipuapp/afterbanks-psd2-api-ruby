@@ -3,10 +3,10 @@ require "spec_helper"
 describe AfterbanksPSD2::Bank do
   describe "#list" do
     before do
-      stub_request(:get, "https://apipsd2.afterbanks.com/listOfSupportedBanks/").
-        to_return(
+      stub_request(:get, "https://apipsd2.afterbanks.com/listOfSupportedBanks/")
+        .to_return(
           status: 200,
-          body: response_json(resource: 'bank', action: 'list')
+          body:   response_json(resource: 'bank', action: 'list')
         )
     end
 
@@ -361,12 +361,12 @@ describe AfterbanksPSD2::Bank do
 
     let(:original_bank) do
       AfterbanksPSD2::Bank.new(
-        country_code: country_code,
-        service: service,
-        swift: swift,
-        fullname: fullname,
-        image: image,
-        image_svg: image_svg,
+        country_code:       country_code,
+        service:            service,
+        swift:              swift,
+        fullname:           fullname,
+        image:              image,
+        image_svg:          image_svg,
         payments_supported: payments_supported
       )
     end

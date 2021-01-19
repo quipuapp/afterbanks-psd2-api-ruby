@@ -13,7 +13,7 @@ module AfterbanksPSD2
     private
 
     def sanitize_data(data)
-      data.inject({}) do |hash, (key, value)|
+      data.reduce({}) do |hash, (key, value)|
         hash[key.to_sym] = value
 
         hash
@@ -32,7 +32,7 @@ module AfterbanksPSD2
       fields_information.each do |official_name, field_information|
         raw_value = nil
 
-        if original_name = field_information[:original_name]
+        if (original_name = field_information[:original_name])
           raw_value = data[original_name]
         end
 

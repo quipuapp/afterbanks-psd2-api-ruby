@@ -28,10 +28,10 @@ describe AfterbanksPSD2 do
       let(:method) { :get }
 
       before do
-        stub_request(:get, "https://apipsd2.afterbanks.com/PSD2/some/endpoint?a=b&c=d&e=f").
-          to_return(
-            status: 200,
-            body: "{}",
+        stub_request(:get, "https://apipsd2.afterbanks.com/PSD2/some/endpoint?a=b&c=d&e=f")
+          .to_return(
+            status:  200,
+            body:    "{}",
             headers: { debug_id: 'abcd' }
           )
       end
@@ -39,23 +39,23 @@ describe AfterbanksPSD2 do
       it "works" do
         expect(subject)
           .to receive(:log_request)
-          .with(
-            method: :get,
-            url: "https://apipsd2.afterbanks.com/PSD2/some/endpoint",
-            params: { a: :b, c: :d, e: :f },
-            debug_id: 'abcd'
-          )
+                .with(
+                  method:   :get,
+                  url:      "https://apipsd2.afterbanks.com/PSD2/some/endpoint",
+                  params:   { a: :b, c: :d, e: :f },
+                  debug_id: 'abcd'
+                )
 
         expect(RestClient::Request)
           .to receive(:execute)
-          .with(
-            method: :get,
-            url: "https://apipsd2.afterbanks.com/PSD2/some/endpoint",
-            headers: {
-              params: { a: :b, c: :d, e: :f }
-            }
-          )
-          .and_call_original
+                .with(
+                  method:  :get,
+                  url:     "https://apipsd2.afterbanks.com/PSD2/some/endpoint",
+                  headers: {
+                    params: { a: :b, c: :d, e: :f }
+                  }
+                )
+                .and_call_original
 
         api_call
       end
@@ -68,14 +68,14 @@ describe AfterbanksPSD2 do
         stub_request(:post, "https://apipsd2.afterbanks.com/PSD2/some/endpoint")
           .with(
             body: {
-              "a"=>"b",
-              "c"=>"d",
-              "e"=>"f"
+              "a" => "b",
+              "c" => "d",
+              "e" => "f"
             }
           )
           .to_return(
-            status: 200,
-            body: "{}",
+            status:  200,
+            body:    "{}",
             headers: { debug_id: 'abcd' }
           )
       end
@@ -83,21 +83,21 @@ describe AfterbanksPSD2 do
       it "works" do
         expect(subject)
           .to receive(:log_request)
-          .with(
-            method: :post,
-            url: "https://apipsd2.afterbanks.com/PSD2/some/endpoint",
-            params: { a: :b, c: :d, e: :f },
-            debug_id: 'abcd'
-          )
+                .with(
+                  method:   :post,
+                  url:      "https://apipsd2.afterbanks.com/PSD2/some/endpoint",
+                  params:   { a: :b, c: :d, e: :f },
+                  debug_id: 'abcd'
+                )
 
         expect(RestClient::Request)
           .to receive(:execute)
-          .with(
-            method: :post,
-            url: "https://apipsd2.afterbanks.com/PSD2/some/endpoint",
-            payload: {:a=>:b, :c=>:d, :e=>:f}
-          )
-          .and_call_original
+                .with(
+                  method:  :post,
+                  url:     "https://apipsd2.afterbanks.com/PSD2/some/endpoint",
+                  payload: { :a => :b, :c => :d, :e => :f }
+                )
+                .and_call_original
 
         api_call
       end
@@ -114,18 +114,18 @@ describe AfterbanksPSD2 do
     let(:params) {
       {
         servicekey: 'secret_stuff',
-        a: :z,
-        b: :c,
-        code: 'ruby',
-        d: :e
+        a:          :z,
+        b:          :c,
+        code:       'ruby',
+        d:          :e
       }
     }
     let(:debug_id) { 'abcd' }
     let(:log_request) {
       subject.log_request(
-        method: method,
-        url: url,
-        params: params,
+        method:   method,
+        url:      url,
+        params:   params,
         debug_id: debug_id
       )
     }
@@ -147,7 +147,7 @@ describe AfterbanksPSD2 do
     context "with a set-up logger" do
       before do
         logger = double(Logger)
-        allow(logger).to receive(:info) { }
+        allow(logger).to receive(:info)
 
         allow(AfterbanksPSD2).to receive_message_chain(:configuration, :logger) {
           logger
@@ -157,24 +157,24 @@ describe AfterbanksPSD2 do
       it "calls the logger with the proper info" do
         expect(AfterbanksPSD2.configuration.logger)
           .to receive(:info)
-          .with(
-            {
-              message: 'Afterbanks request',
-              method: 'GET',
-              url: 'https://some.where/over/the/rainbow',
-              time: "2020-03-24 18:47:00 +0100",
-              timestamp: 1585072020,
-              debug_id: 'abcd',
-              params: {
-                servicekey: '<masked>',
-                a: 'z',
-                b: 'c',
-                code: 'ruby',
-                d: 'e'
-              }
-            }
-          )
-          .once
+                .with(
+                  {
+                    message:   'Afterbanks request',
+                    method:    'GET',
+                    url:       'https://some.where/over/the/rainbow',
+                    time:      "2020-03-24 18:47:00 +0100",
+                    timestamp: 1585072020,
+                    debug_id:  'abcd',
+                    params:    {
+                      servicekey: '<masked>',
+                      a:          'z',
+                      b:          'c',
+                      code:       'ruby',
+                      d:          'e'
+                    }
+                  }
+                )
+                .once
 
         log_request
       end
@@ -185,18 +185,18 @@ describe AfterbanksPSD2 do
         it "calls the logger with the proper info" do
           expect(AfterbanksPSD2.configuration.logger)
             .to receive(:info)
-            .with(
-              {
-                message: 'Afterbanks request',
-                method: 'GET',
-                url: 'https://some.where/over/the/rainbow',
-                time: "2020-03-24 18:47:00 +0100",
-                timestamp: 1585072020,
-                debug_id: 'abcd',
-                params: { }
-              }
-            )
-            .once
+                  .with(
+                    {
+                      message:   'Afterbanks request',
+                      method:    'GET',
+                      url:       'https://some.where/over/the/rainbow',
+                      time:      "2020-03-24 18:47:00 +0100",
+                      timestamp: 1585072020,
+                      debug_id:  'abcd',
+                      params:    {}
+                    }
+                  )
+                  .once
 
           log_request
         end
@@ -208,24 +208,24 @@ describe AfterbanksPSD2 do
         it "calls the logger with the proper info" do
           expect(AfterbanksPSD2.configuration.logger)
             .to receive(:info)
-            .with(
-              {
-                message: 'Afterbanks request',
-                method: 'GET',
-                url: 'https://some.where/over/the/rainbow',
-                time: "2020-03-24 18:47:00 +0100",
-                timestamp: 1585072020,
-                debug_id: 'none',
-                params: {
-                  servicekey: '<masked>',
-                  a: 'z',
-                  b: 'c',
-                  code: 'ruby',
-                  d: 'e'
-                }
-              }
-            )
-            .once
+                  .with(
+                    {
+                      message:   'Afterbanks request',
+                      method:    'GET',
+                      url:       'https://some.where/over/the/rainbow',
+                      time:      "2020-03-24 18:47:00 +0100",
+                      timestamp: 1585072020,
+                      debug_id:  'none',
+                      params:    {
+                        servicekey: '<masked>',
+                        a:          'z',
+                        b:          'c',
+                        code:       'ruby',
+                        d:          'e'
+                      }
+                    }
+                  )
+                  .once
 
           log_request
         end
