@@ -92,5 +92,129 @@ describe AfterbanksPSD2::Account do
         )
       end
     end
+
+    context "when returning an error" do
+      before do
+        stub_request(:post, "https://apipsd2.afterbanks.com/transactions/")
+          .with(body: body)
+          .to_return(
+            status:  200,
+            body:    response_json(resource: 'errors', action: error),
+            headers: { debug_id: 'acclist1234' }
+          )
+      end
+
+      context "which is 1 (generic)" do
+        let(:error) { '1' }
+
+        it "raises a GenericError" do
+          expect { api_call }.to raise_error(
+            an_instance_of(AfterbanksPSD2::GenericError)
+              .and having_attributes(
+                code:    1,
+                message: "Error genérico"
+              )
+          )
+        end
+      end
+
+      context "which is 50 (incorrect parameters)" do
+        let(:error) { '50' }
+
+        it "raises a IncorrectParametersError" do
+          expect { api_call }.to raise_error(
+            an_instance_of(AfterbanksPSD2::IncorrectParametersError)
+              .and having_attributes(
+                code:    50,
+                message: "Parámetro incorrecto en la llamada a la API"
+              )
+          )
+        end
+      end
+
+      context "which is C000 (generic)" do
+        let(:error) { 'C000' }
+
+        it "raises a GenericConsentError" do
+          expect { api_call }.to raise_error(
+            an_instance_of(AfterbanksPSD2::GenericConsentError)
+              .and having_attributes(
+                code:    'C000',
+                message: "Error genérico con el consentimiento"
+              )
+          )
+        end
+      end
+
+      context "which is C001 (generic, consent variant)" do
+        let(:error) { 'C001' }
+
+        it "raises a InvalidConsentError" do
+          expect { api_call }.to raise_error(
+            an_instance_of(AfterbanksPSD2::InvalidConsentError)
+              .and having_attributes(
+                code:    'C001',
+                message: "Consentimiento inválido"
+              )
+          )
+        end
+      end
+
+      context "which is C002 (consent has not finalized the setup process)" do
+        let(:error) { 'C002' }
+
+        it "raises a ConsentWithUnfinalizedProcessError" do
+          expect { api_call }.to raise_error(
+            an_instance_of(AfterbanksPSD2::ConsentWithUnfinalizedProcessError)
+              .and having_attributes(
+                code:    'C002',
+                message: "Proceso de consentimiento no ha sido finalizado"
+              )
+          )
+        end
+      end
+
+      context "which is C003 (product mismatch with the consent, consent variant)" do
+        let(:error) { 'C003' }
+
+        it "raises a ProductMismatchConsentError" do
+          expect { api_call }.to raise_error(
+            an_instance_of(AfterbanksPSD2::ProductMismatchConsentError)
+              .and having_attributes(
+                code:    'C003',
+                message: "El consentimiento no ha sido creado para el producto solicitado"
+              )
+          )
+        end
+      end
+
+      context "which is C004 (expired consent)" do
+        let(:error) { 'C004' }
+
+        it "raises a ExpiredConsentError" do
+          expect { api_call }.to raise_error(
+            an_instance_of(AfterbanksPSD2::ExpiredConsentError)
+              .and having_attributes(
+                code:    'C004',
+                message: "Consentimiento expirado"
+              )
+          )
+        end
+      end
+
+      context "which is C005 (consent has reached maximum number of calls)" do
+        let(:error) { 'C005' }
+
+        it "raises a MaximumNumberOfCallsReachedConsentError" do
+          expect { api_call }.to raise_error(
+            an_instance_of(AfterbanksPSD2::MaximumNumberOfCallsReachedConsentError)
+              .and having_attributes(
+                code:    'C005',
+                message: "El consentimiento ha alcanzado el límite diario permitido"
+              )
+          )
+        end
+      end
+    end
   end
 end

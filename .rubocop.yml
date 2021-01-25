@@ -2,6 +2,7 @@ inherit_from: .rubocop_exclusions.yml
 
 AllCops:
   DisabledByDefault: true
+  SuggestExtensions: false
   TargetRubyVersion: 2.6.6
 
 Documentation:

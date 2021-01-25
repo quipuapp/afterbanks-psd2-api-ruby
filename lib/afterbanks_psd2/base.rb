@@ -40,6 +40,11 @@ module AfterbanksPSD2
 
       response_body = JSON.parse(response.body)
 
+      treat_errors_if_any(
+        response_body: response_body,
+        debug_id:      debug_id
+      )
+
       [response_body, debug_id]
     end
 
@@ -71,6 +76,45 @@ module AfterbanksPSD2
         debug_id:  debug_id || 'none',
         params:    safe_params
       )
+    end
+
+    def treat_errors_if_any(response_body:, debug_id:)
+      return unless response_body.is_a?(Hash)
+
+      code = response_body['code']
+      integer_code = code.to_i
+      if integer_code.to_s == code
+        code = integer_code
+      end
+
+      message = response_body['message']
+
+      error_info = { message: message, debug_id: debug_id }
+
+      case code
+      when 1
+        raise GenericError.new(error_info)
+      when 50
+        raise IncorrectParametersError.new(error_info)
+      when 'C000'
+        raise GenericConsentError.new(error_info)
+      when 'C001'
+        raise InvalidConsentError.new(error_info)
+      when 'C002'
+        raise ConsentWithUnfinalizedProcessError.new(error_info)
+      when 'C003'
+        raise ProductMismatchConsentError.new(error_info)
+      when 'C004'
+        raise ExpiredConsentError.new(error_info)
+      when 'C005'
+        raise MaximumNumberOfCallsReachedConsentError.new(error_info)
+      when 'T000'
+        raise GenericTransactionError.new(error_info)
+      when 'T001'
+        raise ProductMismatchTransactionError.new(error_info)
+      end
+
+      nil
     end
   end
 end
