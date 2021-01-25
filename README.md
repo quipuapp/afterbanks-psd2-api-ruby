@@ -33,7 +33,7 @@ You can set a `logger` as well.
 Changelog
 ---------
 
-TBD
+* 0.1.0 First full version, including resource wrapping (banks, user, accounts, transactions), error coverage and support for logging
 
 TODO
 ----
