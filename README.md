@@ -12,7 +12,23 @@ Install the gem (`gem install afterbanks-psd2-api-ruby`) or include it in your G
 Configuration
 ---------
 
-TBD
+Just set the service key by doing this:
+
+```ruby
+AfterbanksPSD2.servicekey = 'yourservicekey'
+```
+
+Or, if you use it in a Rails application, create an initializer with this content:
+
+```ruby
+require 'afterbanks'
+
+AfterbanksPSD2.configure do |config|
+  config.servicekey = 'yourservicekey'
+end
+```
+
+You can set a `logger` as well.
 
 Changelog
 ---------
@@ -22,7 +38,8 @@ TBD
 TODO
 ----
 
-TBD
+* Full usage for each resource
+* Proper explanation of the `AfterbanksPSD2:Error` and its subclasses
 
 About Afterbanks
 ------------
