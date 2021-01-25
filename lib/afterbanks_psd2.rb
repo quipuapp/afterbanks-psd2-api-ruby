@@ -7,3 +7,4 @@ require 'afterbanks_psd2/collection'
 
 require 'afterbanks_psd2/resources/bank'
 require 'afterbanks_psd2/resources/user'
+require 'afterbanks_psd2/resources/account'
