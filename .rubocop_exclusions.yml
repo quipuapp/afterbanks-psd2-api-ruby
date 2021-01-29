@@ -1,0 +1,10 @@
+# Offense count: 1
+Lint/MissingSuper:
+  Exclude:
+    - 'lib/afterbanks_psd2/collection.rb'
+
+# Offense count: 2
+Security/MarshalLoad:
+  Exclude:
+    - 'spec/afterbanks_psd2/resources/bank_spec.rb'
+    - 'spec/afterbanks_psd2/resources/user_spec.rb'

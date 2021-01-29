@@ -1,0 +1,44 @@
+version: 2.1
+
+executors:
+  gem-executor:
+    working_directory: ~/tmp/afterbanks-psd2-api-ruby
+    docker:
+      - image: circleci/ruby:2.6.6
+    environment:
+      TZ: "Europe/Madrid"
+
+jobs:
+  build-test-gem:
+    executor: gem-executor
+    steps:
+      - checkout
+
+      - run:
+          name: Update bundler
+          command: gem install bundler -v 2.2.5
+
+      - restore_cache:
+          keys:
+            - afterbanks-psd2-api-ruby-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - afterbanks-psd2-api-ruby-bundle-v2-
+
+      - run: bundle install
+
+      - save_cache:
+          key: afterbanks-psd2-api-ruby-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - run:
+          name: Run rspec
+          command: bundle exec rspec spec/
+
+      - run:
+          name: Run Rubocop
+          command: bundle exec rubocop
+
+workflows:
+  build-test-gem:
+    jobs:
+      - build-test-gem
