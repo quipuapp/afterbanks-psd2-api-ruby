@@ -18,9 +18,9 @@ describe AfterbanksPSD2::Bank do
       banks = response.result
 
       expect(banks.class).to eq(AfterbanksPSD2::Collection)
-      expect(banks.size).to eq(13)
+      expect(banks.size).to eq(12)
 
-      bank1, bank2, bank3, bank4, bank5, bank6, bank7, bank8, bank9, bank10, bank11, bank12, bank13 = banks
+      bank1, bank2, bank3, bank4, bank5, bank6, bank7, bank8, bank9, bank10, bank11, bank12 = banks
 
       expect(bank1.class).to eq(AfterbanksPSD2::Bank)
       expect(bank1.country_code).to eq("ES")
@@ -35,25 +35,25 @@ describe AfterbanksPSD2::Bank do
       expect(bank2.country_code).to eq("ES")
       expect(bank2.service).to eq("bbva")
       expect(bank2.swift).to eq("BBVAESMM")
-      expect(bank2.fullname).to eq("BBVA Particulares")
+      expect(bank2.fullname).to eq("BBVA")
       expect(bank2.image).to eq("https://www.afterbanks.com/api/icons/bbva.min.png")
       expect(bank2.image_svg).to eq("bbva")
       expect(bank2.payments_supported).to be_truthy
 
       expect(bank3.class).to eq(AfterbanksPSD2::Bank)
-      expect(bank3.country_code).to eq("ES")
-      expect(bank3.service).to eq("bbva_emp")
+      expect(bank3.country_code).to eq("FR")
+      expect(bank3.service).to eq("bbva_fr")
       expect(bank3.swift).to eq("BBVAESMM")
-      expect(bank3.fullname).to eq("BBVA Net Cash Empresas")
+      expect(bank3.fullname).to eq("BBVA France")
       expect(bank3.image).to eq("https://www.afterbanks.com/api/icons/bbva.min.png")
       expect(bank3.image_svg).to eq("bbva")
       expect(bank3.payments_supported).to be_truthy
 
       expect(bank4.class).to eq(AfterbanksPSD2::Bank)
       expect(bank4.country_code).to eq("ES")
-      expect(bank4.service).to eq("caixa_emp")
+      expect(bank4.service).to eq("caixa")
       expect(bank4.swift).to eq("CAIXESBB")
-      expect(bank4.fullname).to eq("Caixabank Empresas")
+      expect(bank4.fullname).to eq("Caixabank")
       expect(bank4.image).to eq("https://www.afterbanks.com/api/icons/caixa.min.png")
       expect(bank4.image_svg).to eq("caixa")
       expect(bank4.payments_supported).to be_truthy
@@ -138,15 +138,6 @@ describe AfterbanksPSD2::Bank do
       expect(bank12.image).to eq("https://www.afterbanks.com/api/icons/chebanca_it.min.png")
       expect(bank12.image_svg).to eq("chebanca_it")
       expect(bank12.payments_supported).to be_truthy
-
-      expect(bank13.class).to eq(AfterbanksPSD2::Bank)
-      expect(bank13.country_code).to eq("ES")
-      expect(bank13.service).to eq("caixa")
-      expect(bank13.swift).to eq("CAIXESBB")
-      expect(bank13.fullname).to eq("Caixabank Particulares")
-      expect(bank13.image).to eq("https://www.afterbanks.com/api/icons/caixa.min.png")
-      expect(bank13.image_svg).to eq("caixa")
-      expect(bank13.payments_supported).to be_truthy
     end
 
     context "when passing the :ordered flag" do
@@ -158,9 +149,9 @@ describe AfterbanksPSD2::Bank do
         banks = response.result
 
         expect(banks.class).to eq(AfterbanksPSD2::Collection)
-        expect(banks.size).to eq(13)
+        expect(banks.size).to eq(12)
 
-        bank1, bank2, bank3, bank4, bank5, bank6, bank7, bank8, bank9, bank10, bank11, bank12, bank13 = banks
+        bank1, bank2, bank3, bank4, bank5, bank6, bank7, bank8, bank9, bank10, bank11, bank12 = banks
 
         expect(bank1.class).to eq(AfterbanksPSD2::Bank)
         expect(bank1.country_code).to eq("ES")
@@ -173,18 +164,18 @@ describe AfterbanksPSD2::Bank do
 
         expect(bank2.class).to eq(AfterbanksPSD2::Bank)
         expect(bank2.country_code).to eq("ES")
-        expect(bank2.service).to eq("bbva_emp")
+        expect(bank2.service).to eq("bbva")
         expect(bank2.swift).to eq("BBVAESMM")
-        expect(bank2.fullname).to eq("BBVA Net Cash Empresas")
+        expect(bank2.fullname).to eq("BBVA")
         expect(bank2.image).to eq("https://www.afterbanks.com/api/icons/bbva.min.png")
         expect(bank2.image_svg).to eq("bbva")
         expect(bank2.payments_supported).to be_truthy
 
         expect(bank3.class).to eq(AfterbanksPSD2::Bank)
-        expect(bank3.country_code).to eq("ES")
-        expect(bank3.service).to eq("bbva")
+        expect(bank3.country_code).to eq("FR")
+        expect(bank3.service).to eq("bbva_fr")
         expect(bank3.swift).to eq("BBVAESMM")
-        expect(bank3.fullname).to eq("BBVA Particulares")
+        expect(bank3.fullname).to eq("BBVA France")
         expect(bank3.image).to eq("https://www.afterbanks.com/api/icons/bbva.min.png")
         expect(bank3.image_svg).to eq("bbva")
         expect(bank3.payments_supported).to be_truthy
@@ -227,57 +218,48 @@ describe AfterbanksPSD2::Bank do
 
         expect(bank8.class).to eq(AfterbanksPSD2::Bank)
         expect(bank8.country_code).to eq("ES")
-        expect(bank8.service).to eq("caixa_emp")
+        expect(bank8.service).to eq("caixa")
         expect(bank8.swift).to eq("CAIXESBB")
-        expect(bank8.fullname).to eq("Caixabank Empresas")
+        expect(bank8.fullname).to eq("Caixabank")
         expect(bank8.image).to eq("https://www.afterbanks.com/api/icons/caixa.min.png")
         expect(bank8.image_svg).to eq("caixa")
         expect(bank8.payments_supported).to be_truthy
 
         expect(bank9.class).to eq(AfterbanksPSD2::Bank)
-        expect(bank9.country_code).to eq("ES")
-        expect(bank9.service).to eq("caixa")
-        expect(bank9.swift).to eq("CAIXESBB")
-        expect(bank9.fullname).to eq("Caixabank Particulares")
-        expect(bank9.image).to eq("https://www.afterbanks.com/api/icons/caixa.min.png")
-        expect(bank9.image_svg).to eq("caixa")
+        expect(bank9.country_code).to eq("IT")
+        expect(bank9.service).to eq("chebanca_it")
+        expect(bank9.swift).to eq("MICSITM1XXX")
+        expect(bank9.fullname).to eq("CheBanca")
+        expect(bank9.image).to eq("https://www.afterbanks.com/api/icons/chebanca_it.min.png")
+        expect(bank9.image_svg).to eq("chebanca_it")
         expect(bank9.payments_supported).to be_truthy
 
         expect(bank10.class).to eq(AfterbanksPSD2::Bank)
-        expect(bank10.country_code).to eq("IT")
-        expect(bank10.service).to eq("chebanca_it")
-        expect(bank10.swift).to eq("MICSITM1XXX")
-        expect(bank10.fullname).to eq("CheBanca")
-        expect(bank10.image).to eq("https://www.afterbanks.com/api/icons/chebanca_it.min.png")
-        expect(bank10.image_svg).to eq("chebanca_it")
+        expect(bank10.country_code).to eq("BE")
+        expect(bank10.service).to eq("hellobank_be")
+        expect(bank10.swift).to eq("DIRAAT2S")
+        expect(bank10.fullname).to eq("Hello Bank")
+        expect(bank10.image).to eq("https://www.afterbanks.com/api/icons/hellobank_it.min.png")
+        expect(bank10.image_svg).to eq("hellobank_it")
         expect(bank10.payments_supported).to be_truthy
 
         expect(bank11.class).to eq(AfterbanksPSD2::Bank)
-        expect(bank11.country_code).to eq("BE")
-        expect(bank11.service).to eq("hellobank_be")
-        expect(bank11.swift).to eq("DIRAAT2S")
-        expect(bank11.fullname).to eq("Hello Bank")
-        expect(bank11.image).to eq("https://www.afterbanks.com/api/icons/hellobank_it.min.png")
-        expect(bank11.image_svg).to eq("hellobank_it")
+        expect(bank11.country_code).to eq("IT")
+        expect(bank11.service).to eq("paschidisiena_it")
+        expect(bank11.swift).to eq("PASCITMMXXX")
+        expect(bank11.fullname).to eq("Monte dei paschi di Siena")
+        expect(bank11.image).to eq("https://www.afterbanks.com/api/icons/paschidisiena_it.min.png")
+        expect(bank11.image_svg).to eq("paschidisiena_it")
         expect(bank11.payments_supported).to be_truthy
 
         expect(bank12.class).to eq(AfterbanksPSD2::Bank)
-        expect(bank12.country_code).to eq("IT")
-        expect(bank12.service).to eq("paschidisiena_it")
-        expect(bank12.swift).to eq("PASCITMMXXX")
-        expect(bank12.fullname).to eq("Monte dei paschi di Siena")
-        expect(bank12.image).to eq("https://www.afterbanks.com/api/icons/paschidisiena_it.min.png")
-        expect(bank12.image_svg).to eq("paschidisiena_it")
+        expect(bank12.country_code).to eq("ES")
+        expect(bank12.service).to eq("N26")
+        expect(bank12.swift).to eq("NTSBDEB1")
+        expect(bank12.fullname).to eq("N26")
+        expect(bank12.image).to eq("https://www.afterbanks.com/api/icons/n26.min.png")
+        expect(bank12.image_svg).to eq("n26")
         expect(bank12.payments_supported).to be_truthy
-
-        expect(bank13.class).to eq(AfterbanksPSD2::Bank)
-        expect(bank13.country_code).to eq("ES")
-        expect(bank13.service).to eq("N26")
-        expect(bank13.swift).to eq("NTSBDEB1")
-        expect(bank13.fullname).to eq("N26")
-        expect(bank13.image).to eq("https://www.afterbanks.com/api/icons/n26.min.png")
-        expect(bank13.image_svg).to eq("n26")
-        expect(bank13.payments_supported).to be_truthy
       end
     end
 

@@ -18,17 +18,17 @@
     "paymentsSupported": "1"
   },
   {
-    "countryCode": "ES",
-    "service": "bbva_emp",
+    "countryCode": "FR",
+    "service": "bbva_fr",
     "swift": "BBVAESMM",
-    "fullname": "BBVA Net Cash",
+    "fullname": "BBVA France",
     "image": "https://www.afterbanks.com/api/icons/bbva.min.png",
     "imageSVG": "bbva",
     "paymentsSupported": "1"
   },
   {
     "countryCode": "ES",
-    "service": "caixa_emp",
+    "service": "caixa",
     "swift": "CAIXESBB",
     "fullname": "Caixabank",
     "image": "https://www.afterbanks.com/api/icons/caixa.min.png",
@@ -105,15 +105,6 @@
     "fullname": "CheBanca",
     "image": "https://www.afterbanks.com/api/icons/chebanca_it.min.png",
     "imageSVG": "chebanca_it",
-    "paymentsSupported": "1"
-  },
-  {
-    "countryCode": "ES",
-    "service": "caixa",
-    "swift": "CAIXESBB",
-    "fullname": "Caixabank",
-    "image": "https://www.afterbanks.com/api/icons/caixa.min.png",
-    "imageSVG": "caixa",
     "paymentsSupported": "1"
   }
 ]
