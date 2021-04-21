@@ -93,30 +93,6 @@ describe AfterbanksPSD2::Account do
       end
     end
 
-    context "when returning an empty response" do
-      before do
-        stub_request(:post, "https://apipsd2.afterbanks.com/transactions/")
-          .with(body: body)
-          .to_return(
-            status:  200,
-            body:    response_json(resource: 'account', action: 'empty'),
-            headers: { debug_id: 'acclist1234' }
-          )
-      end
-
-      it "does the proper request and returns the proper AfterbanksPSD2::Account instances" do
-        response = api_call
-
-        expect(response.class).to eq(AfterbanksPSD2::Response)
-        expect(response.debug_id).to eq('acclist1234')
-
-        accounts = response.result
-
-        expect(accounts.class).to eq(AfterbanksPSD2::Collection)
-        expect(accounts.size).to eq(0)
-      end
-    end
-
     context "when returning an error" do
       before do
         stub_request(:post, "https://apipsd2.afterbanks.com/transactions/")

@@ -38,11 +38,7 @@ module AfterbanksPSD2
         debug_id: debug_id
       )
 
-      response_body = nil
-
-      unless response.body.empty?
-        response_body = JSON.parse(response.body)
-      end
+      response_body = JSON.parse(response.body)
 
       treat_errors_if_any(
         response_body: response_body,
