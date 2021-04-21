@@ -31,6 +31,7 @@ module AfterbanksPSD2
           ),
           self
         ),
+        body:     response,
         debug_id: debug_id
       )
     end
