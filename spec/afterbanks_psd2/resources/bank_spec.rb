@@ -14,6 +14,118 @@ describe AfterbanksPSD2::Bank do
       response = AfterbanksPSD2::Bank.list
 
       expect(response.class).to eq(AfterbanksPSD2::Response)
+      expect(response.body).to match_array(
+        [
+          {
+              "countryCode"=>"ES",
+              "service"=>"N26",
+              "swift"=>"NTSBDEB1",
+              "fullname"=>"N26",
+              "image"=>"https://www.afterbanks.com/api/icons/n26.min.png",
+              "imageSVG"=>"n26",
+              "paymentsSupported"=>"1"
+          },
+          {
+              "countryCode"=>"ES",
+              "service"=>"bbva",
+              "swift"=>"BBVAESMM",
+              "fullname"=>"BBVA",
+              "image"=>"https://www.afterbanks.com/api/icons/bbva.min.png",
+              "imageSVG"=>"bbva",
+              "paymentsSupported"=>"1"
+          },
+          {
+              "countryCode"=>"FR",
+              "service"=>"bbva_fr",
+              "swift"=>"BBVAESMM",
+              "fullname"=>"BBVA France",
+              "image"=>"https://www.afterbanks.com/api/icons/bbva.min.png",
+              "imageSVG"=>"bbva",
+              "paymentsSupported"=>"1"
+          },
+          {
+              "countryCode"=>"ES",
+              "service"=>"caixa",
+              "swift"=>"CAIXESBB",
+              "fullname"=>"Caixabank",
+              "image"=>"https://www.afterbanks.com/api/icons/caixa.min.png",
+              "imageSVG"=>"caixa",
+              "paymentsSupported"=>"1"
+          },
+          {
+              "countryCode"=>"ES",
+              "service"=>"cajaingenieros",
+              "swift"=>"CDENESBB",
+              "fullname"=>"Caixa d'Enginyers",
+              "image"=>"https://www.afterbanks.com/api/icons/cajaingenieros.min.png",
+              "imageSVG"=>"cajaingenieros",
+              "paymentsSupported"=>"0"
+          },
+          {
+              "countryCode"=>"IT",
+              "service"=>"paschidisiena_it",
+              "swift"=>"PASCITMMXXX",
+              "fullname"=>"Monte dei paschi di Siena",
+              "image"=>"https://www.afterbanks.com/api/icons/paschidisiena_it.min.png",
+              "imageSVG"=>"paschidisiena_it",
+              "paymentsSupported"=>"1"
+          },
+          {
+              "countryCode"=>"PT",
+              "service"=>"catv",
+              "swift"=>"CTIUPTP1XXX",
+              "fullname"=>"Caixa de CA Mutuo Torres Vedras",
+              "image"=>"https://www.afterbanks.com/api/icons/catv.min.png",
+              "imageSVG"=>"catv",
+              "paymentsSupported"=>"1"
+          },
+          {
+              "countryCode"=>"ES",
+              "service"=>"sabadell",
+              "swift"=>"BSABESBB",
+              "fullname"=>"Banco Sabadell",
+              "image"=>"https://www.afterbanks.com/api/icons/sabadell.min.png",
+              "imageSVG"=>"sabadell",
+              "paymentsSupported"=>"1"
+          },
+          {
+              "countryCode"=>"ES",
+              "service"=>"caixaguissona",
+              "swift"=>"CAXIES21XXX",
+              "fullname"=>"Caixa Guissona",
+              "image"=>"https://www.afterbanks.com/api/icons/cajamar.min.png",
+              "imageSVG"=>"cajamar",
+              "paymentsSupported"=>"0"
+          },
+          {
+              "countryCode"=>"ES",
+              "service"=>"caixaruralburriana",
+              "swift"=>"CCRIES2A",
+              "fullname"=>"Caixa Burriana",
+              "image"=>"https://www.afterbanks.com/api/icons/cajamar.min.png",
+              "imageSVG"=>"cajamar",
+              "paymentsSupported"=>"1"
+          },
+          {
+              "countryCode"=>"BE",
+              "service"=>"hellobank_be",
+              "swift"=>"DIRAAT2S",
+              "fullname"=>"Hello Bank",
+              "image"=>"https://www.afterbanks.com/api/icons/hellobank_it.min.png",
+              "imageSVG"=>"hellobank_it",
+              "paymentsSupported"=>"1"
+          },
+          {
+              "countryCode"=>"IT",
+              "service"=>"chebanca_it",
+              "swift"=>"MICSITM1XXX",
+              "fullname"=>"CheBanca",
+              "image"=>"https://www.afterbanks.com/api/icons/chebanca_it.min.png",
+              "imageSVG"=>"chebanca_it",
+              "paymentsSupported"=>"1"
+          }
+        ]
+      )
 
       banks = response.result
 

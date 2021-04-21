@@ -20,6 +20,15 @@ describe AfterbanksPSD2::User do
       response = AfterbanksPSD2::User.get
 
       expect(response.class).to eq(AfterbanksPSD2::Response)
+      expect(response.body).to match_array(
+        {
+          "limit"=>1234391245,
+          "counter"=>912,
+          "remaining_calls"=>1234390333,
+          "date_renewal"=>"01-04-2020",
+          "detail"=>nil
+        }
+      )
       expect(response.debug_id).to eq('usrget1234')
 
       user = response.result
