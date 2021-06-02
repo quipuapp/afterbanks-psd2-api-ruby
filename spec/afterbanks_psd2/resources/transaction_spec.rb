@@ -39,181 +39,181 @@ describe AfterbanksPSD2::Transaction do
         expect(response.body).to match_array(
           [
             {
-              "product"=>"ES2720809591124344566256",
-              "type"=>"checking",
-              "balance"=>1094.12,
-              "countable_balance"=>1081.13,
-              "arranged_balance"=>1143.71,
-              "currency"=>"EUR",
-              "description"=>"A checking account",
-              "iban"=>"ES2720809591124344566256",
-              "is_owner"=>1,
-              "holders"=>[
+              "product"           => "ES2720809591124344566256",
+              "type"              => "checking",
+              "balance"           => 1094.12,
+              "countable_balance" => 1081.13,
+              "arranged_balance"  => 1143.71,
+              "currency"          => "EUR",
+              "description"       => "A checking account",
+              "iban"              => "ES2720809591124344566256",
+              "is_owner"          => 1,
+              "holders"           => [
                 {
-                  "role"=>"Admin",
-                  "name"=>"Mary",
-                  "id"=>1
+                  "role" => "Admin",
+                  "name" => "Mary",
+                  "id"   => 1
                 },
                 {
-                  "role"=>"Admin",
-                  "name"=>"Liz",
-                  "id"=>2
+                  "role" => "Admin",
+                  "name" => "Liz",
+                  "id"   => 2
                 },
                 {
-                  "role"=>"Supervisor",
-                  "name"=>"John",
-                  "id"=>3
+                  "role" => "Supervisor",
+                  "name" => "John",
+                  "id"   => 3
                 }
               ],
-              "transactions"=>[
+              "transactions"      => [
                 {
-                  "date"=>"01-02-2020",
-                  "date2"=>"02-02-2020",
-                  "amount"=>123.11,
-                  "balance"=>1094.12,
-                  "description"=>"Some money in",
-                  "categoryId"=>19,
-                  "transactionId"=>"abcd1234",
-                  "account"=> an_object_having_attributes(
-                    class: AfterbanksPSD2::Account,
-                    product: "ES2720809591124344566256",
-                    type: 'checking',
-                    balance: 1094.12,
+                  "date"          => "01-02-2020",
+                  "date2"         => "02-02-2020",
+                  "amount"        => 123.11,
+                  "balance"       => 1094.12,
+                  "description"   => "Some money in",
+                  "categoryId"    => 19,
+                  "transactionId" => "abcd1234",
+                  "account"       => an_object_having_attributes(
+                    class:             AfterbanksPSD2::Account,
+                    product:           "ES2720809591124344566256",
+                    type:              'checking',
+                    balance:           1094.12,
                     countable_balance: 1081.13,
-                    arranged_balance: 1143.71,
-                    currency: 'EUR',
-                    description: 'A checking account',
-                    iban: 'ES2720809591124344566256',
-                    is_owner: true,
-                    holders: [
+                    arranged_balance:  1143.71,
+                    currency:          'EUR',
+                    description:       'A checking account',
+                    iban:              'ES2720809591124344566256',
+                    is_owner:          true,
+                    holders:           [
                       {
-                        "role"=>"Admin",
-                        "name"=>"Mary",
-                        "id"=>1
+                        "role" => "Admin",
+                        "name" => "Mary",
+                        "id"   => 1
                       },
                       {
-                        "role"=>"Admin",
-                        "name"=>"Liz",
-                        "id"=>2
+                        "role" => "Admin",
+                        "name" => "Liz",
+                        "id"   => 2
                       },
                       {
-                        "role"=>"Supervisor",
-                        "name"=>"John",
-                        "id"=>3
+                        "role" => "Supervisor",
+                        "name" => "John",
+                        "id"   => 3
                       }
                     ]
                   )
                 },
                 {
-                  "date"=>"20-01-2020",
-                  "date2"=>"20-01-2020",
-                  "amount"=>-29.58,
-                  "balance"=>971.01,
-                  "description"=>"A small purchase",
-                  "categoryId"=>6,
-                  "transactionId"=>"defg4321",
-                  "account"=> an_object_having_attributes(
-                    class: AfterbanksPSD2::Account,
-                    product: "ES2720809591124344566256",
-                    type: 'checking',
-                    balance: 1094.12,
+                  "date"          => "20-01-2020",
+                  "date2"         => "20-01-2020",
+                  "amount"        => -29.58,
+                  "balance"       => 971.01,
+                  "description"   => "A small purchase",
+                  "categoryId"    => 6,
+                  "transactionId" => "defg4321",
+                  "account"       => an_object_having_attributes(
+                    class:             AfterbanksPSD2::Account,
+                    product:           "ES2720809591124344566256",
+                    type:              'checking',
+                    balance:           1094.12,
                     countable_balance: 1081.13,
-                    arranged_balance: 1143.71,
-                    currency: 'EUR',
-                    description: 'A checking account',
-                    iban: 'ES2720809591124344566256',
-                    is_owner: true,
-                    holders: [
+                    arranged_balance:  1143.71,
+                    currency:          'EUR',
+                    description:       'A checking account',
+                    iban:              'ES2720809591124344566256',
+                    is_owner:          true,
+                    holders:           [
                       {
-                        "role"=>"Admin",
-                        "name"=>"Mary",
-                        "id"=>1
+                        "role" => "Admin",
+                        "name" => "Mary",
+                        "id"   => 1
                       },
                       {
-                        "role"=>"Admin",
-                        "name"=>"Liz",
-                        "id"=>2
+                        "role" => "Admin",
+                        "name" => "Liz",
+                        "id"   => 2
                       },
                       {
-                        "role"=>"Supervisor",
-                        "name"=>"John",
-                        "id"=>3
+                        "role" => "Supervisor",
+                        "name" => "John",
+                        "id"   => 3
                       }
                     ]
                   )
                 },
                 {
-                  "date"=>"15-01-2020",
-                  "date2"=>"15-01-2020",
-                  "amount"=>-467.12,
-                  "balance"=>1000.59,
-                  "description"=>"A big purchase",
-                  "categoryId"=>12,
-                  "transactionId"=>"ghij1928",
-                  "account"=> an_object_having_attributes(
-                    class: AfterbanksPSD2::Account,
-                    product: "ES2720809591124344566256",
-                    type: 'checking',
-                    balance: 1094.12,
+                  "date"          => "15-01-2020",
+                  "date2"         => "15-01-2020",
+                  "amount"        => -467.12,
+                  "balance"       => 1000.59,
+                  "description"   => "A big purchase",
+                  "categoryId"    => 12,
+                  "transactionId" => "ghij1928",
+                  "account"       => an_object_having_attributes(
+                    class:             AfterbanksPSD2::Account,
+                    product:           "ES2720809591124344566256",
+                    type:              'checking',
+                    balance:           1094.12,
                     countable_balance: 1081.13,
-                    arranged_balance: 1143.71,
-                    currency: 'EUR',
-                    description: 'A checking account',
-                    iban: 'ES2720809591124344566256',
-                    is_owner: true,
-                    holders: [
+                    arranged_balance:  1143.71,
+                    currency:          'EUR',
+                    description:       'A checking account',
+                    iban:              'ES2720809591124344566256',
+                    is_owner:          true,
+                    holders:           [
                       {
-                        "role"=>"Admin",
-                        "name"=>"Mary",
-                        "id"=>1
+                        "role" => "Admin",
+                        "name" => "Mary",
+                        "id"   => 1
                       },
                       {
-                        "role"=>"Admin",
-                        "name"=>"Liz",
-                        "id"=>2
+                        "role" => "Admin",
+                        "name" => "Liz",
+                        "id"   => 2
                       },
                       {
-                        "role"=>"Supervisor",
-                        "name"=>"John",
-                        "id"=>3
+                        "role" => "Supervisor",
+                        "name" => "John",
+                        "id"   => 3
                       }
                     ]
                   )
                 },
                 {
-                  "date"=>"01-01-2019",
-                  "date2"=>"01-01-2019",
-                  "amount"=>1467.71,
-                  "balance"=>1467.71,
-                  "description"=>"Initial transaction",
-                  "categoryId"=>3,
-                  "transactionId"=>"jklm5647",
-                  "account"=> an_object_having_attributes(
-                    class: AfterbanksPSD2::Account,
-                    product: "ES2720809591124344566256",
-                    type: 'checking',
-                    balance: 1094.12,
+                  "date"          => "01-01-2019",
+                  "date2"         => "01-01-2019",
+                  "amount"        => 1467.71,
+                  "balance"       => 1467.71,
+                  "description"   => "Initial transaction",
+                  "categoryId"    => 3,
+                  "transactionId" => "jklm5647",
+                  "account"       => an_object_having_attributes(
+                    class:             AfterbanksPSD2::Account,
+                    product:           "ES2720809591124344566256",
+                    type:              'checking',
+                    balance:           1094.12,
                     countable_balance: 1081.13,
-                    arranged_balance: 1143.71,
-                    currency: 'EUR',
-                    description: 'A checking account',
-                    iban: 'ES2720809591124344566256',
-                    is_owner: true,
-                    holders: [
+                    arranged_balance:  1143.71,
+                    currency:          'EUR',
+                    description:       'A checking account',
+                    iban:              'ES2720809591124344566256',
+                    is_owner:          true,
+                    holders:           [
                       {
-                        "role"=>"Admin",
-                        "name"=>"Mary",
-                        "id"=>1
+                        "role" => "Admin",
+                        "name" => "Mary",
+                        "id"   => 1
                       },
                       {
-                        "role"=>"Admin",
-                        "name"=>"Liz",
-                        "id"=>2
+                        "role" => "Admin",
+                        "name" => "Liz",
+                        "id"   => 2
                       },
                       {
-                        "role"=>"Supervisor",
-                        "name"=>"John",
-                        "id"=>3
+                        "role" => "Supervisor",
+                        "name" => "John",
+                        "id"   => 3
                       }
                     ]
                   )
@@ -221,75 +221,75 @@ describe AfterbanksPSD2::Transaction do
               ]
             },
             {
-              "product"=>"ES8401821618664757634169",
-              "type"=>"checking",
-              "balance"=>216.19,
-              "countable_balance"=>220.44,
-              "arranged_balance"=>213.4,
-              "currency"=>"EUR",
-              "description"=>"Another checking account",
-              "iban"=>"ES8401821618664757634169",
-              "is_owner"=>1,
-              "holders"=>[
+              "product"           => "ES8401821618664757634169",
+              "type"              => "checking",
+              "balance"           => 216.19,
+              "countable_balance" => 220.44,
+              "arranged_balance"  => 213.4,
+              "currency"          => "EUR",
+              "description"       => "Another checking account",
+              "iban"              => "ES8401821618664757634169",
+              "is_owner"          => 1,
+              "holders"           => [
                 {
-                  "role"=>"Admin",
-                  "name"=>"Mary",
-                  "id"=>11
+                  "role" => "Admin",
+                  "name" => "Mary",
+                  "id"   => 11
                 }
               ]
             },
             {
-              "product"=>"ES9231902434113168967688",
-              "type"=>"loan",
-              "balance"=>-91.99,
-              "countable_balance"=>-86.71,
-              "arranged_balance"=>-99.13,
-              "currency"=>"USD",
-              "description"=>"A loan",
-              "iban"=>"ES9231902434113168967688",
-              "is_owner"=>0,
-              "holders"=>[
+              "product"           => "ES9231902434113168967688",
+              "type"              => "loan",
+              "balance"           => -91.99,
+              "countable_balance" => -86.71,
+              "arranged_balance"  => -99.13,
+              "currency"          => "USD",
+              "description"       => "A loan",
+              "iban"              => "ES9231902434113168967688",
+              "is_owner"          => 0,
+              "holders"           => [
                 {
-                  "role"=>"Admin",
-                  "name"=>"Sandy",
-                  "id"=>12
+                  "role" => "Admin",
+                  "name" => "Sandy",
+                  "id"   => 12
                 },
                 {
-                  "role"=>"Supervisor",
-                  "name"=>"Joe",
-                  "id"=>34
+                  "role" => "Supervisor",
+                  "name" => "Joe",
+                  "id"   => 34
                 }
               ],
-              "transactions"=>[
+              "transactions"      => [
                 {
-                  "date"=>"01-04-2021",
-                  "date2"=>"01-04-2021",
-                  "amount"=>818.13,
-                  "balance"=>818.13,
-                  "description"=>"Black sheep transaction",
-                  "categoryId"=>2,
-                  "transactionId"=>"mnop1987",
-                  "account"=> an_object_having_attributes(
-                    class: AfterbanksPSD2::Account,
-                    product: "ES9231902434113168967688",
-                    type: 'loan',
-                    balance: -91.99,
+                  "date"          => "01-04-2021",
+                  "date2"         => "01-04-2021",
+                  "amount"        => 818.13,
+                  "balance"       => 818.13,
+                  "description"   => "Black sheep transaction",
+                  "categoryId"    => 2,
+                  "transactionId" => "mnop1987",
+                  "account"       => an_object_having_attributes(
+                    class:             AfterbanksPSD2::Account,
+                    product:           "ES9231902434113168967688",
+                    type:              'loan',
+                    balance:           -91.99,
                     countable_balance: -86.71,
-                    arranged_balance: -99.13,
-                    currency: 'USD',
-                    description: 'A loan',
-                    iban: 'ES9231902434113168967688',
-                    is_owner: false,
-                    holders: [
+                    arranged_balance:  -99.13,
+                    currency:          'USD',
+                    description:       'A loan',
+                    iban:              'ES9231902434113168967688',
+                    is_owner:          false,
+                    holders:           [
                       {
-                        "role"=>"Admin",
-                        "name"=>"Sandy",
-                        "id"=>12
+                        "role" => "Admin",
+                        "name" => "Sandy",
+                        "id"   => 12
                       },
                       {
-                        "role"=>"Supervisor",
-                        "name"=>"Joe",
-                        "id"=>34
+                        "role" => "Supervisor",
+                        "name" => "Joe",
+                        "id"   => 34
                       }
                     ]
                   )

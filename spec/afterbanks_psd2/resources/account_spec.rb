@@ -34,73 +34,73 @@ describe AfterbanksPSD2::Account do
         expect(response.body).to match_array(
           [
             {
-                "product"=>"ES2720809591124344566256",
-                "type"=>"checking",
-                "balance"=>1094.12,
-                "countable_balance"=>1081.13,
-                "arranged_balance"=>1143.71,
-                "currency"=>"EUR",
-                "description"=>"A checking account",
-                "iban"=>"ES2720809591124344566256",
-                "is_owner"=>1,
-                "holders"=>[
-                    {
-                        "role"=>"Admin",
-                        "name"=>"Mary",
-                        "id"=>1
-                    },
-                    {
-                        "role"=>"Admin",
-                        "name"=>"Liz",
-                        "id"=>2
-                    },
-                    {
-                        "role"=>"Supervisor",
-                        "name"=>"John",
-                        "id"=>3
-                    }
-                ]
+              "product"           => "ES2720809591124344566256",
+              "type"              => "checking",
+              "balance"           => 1094.12,
+              "countable_balance" => 1081.13,
+              "arranged_balance"  => 1143.71,
+              "currency"          => "EUR",
+              "description"       => "A checking account",
+              "iban"              => "ES2720809591124344566256",
+              "is_owner"          => 1,
+              "holders"           => [
+                {
+                  "role" => "Admin",
+                  "name" => "Mary",
+                  "id"   => 1
+                },
+                {
+                  "role" => "Admin",
+                  "name" => "Liz",
+                  "id"   => 2
+                },
+                {
+                  "role" => "Supervisor",
+                  "name" => "John",
+                  "id"   => 3
+                }
+              ]
             },
             {
-                "product"=>"ES8401821618664757634169",
-                "type"=>"checking",
-                "balance"=>216.19,
-                "countable_balance"=>220.44,
-                "arranged_balance"=>213.4,
-                "currency"=>"EUR",
-                "description"=>"Another checking account",
-                "iban"=>"ES8401821618664757634169",
-                "is_owner"=>1,
-                "holders"=>[
-                    {
-                        "role"=>"Admin",
-                        "name"=>"Mary",
-                        "id"=>11
-                    }
-                ]
+              "product"           => "ES8401821618664757634169",
+              "type"              => "checking",
+              "balance"           => 216.19,
+              "countable_balance" => 220.44,
+              "arranged_balance"  => 213.4,
+              "currency"          => "EUR",
+              "description"       => "Another checking account",
+              "iban"              => "ES8401821618664757634169",
+              "is_owner"          => 1,
+              "holders"           => [
+                {
+                  "role" => "Admin",
+                  "name" => "Mary",
+                  "id"   => 11
+                }
+              ]
             },
             {
-                "product"=>"ES9231902434113168967688",
-                "type"=>"loan",
-                "balance"=>-91.99,
-                "countable_balance"=>-86.71,
-                "arranged_balance"=>-99.13,
-                "currency"=>"USD",
-                "description"=>"A loan",
-                "iban"=>"ES9231902434113168967688",
-                "is_owner"=>0,
-                "holders"=>[
-                    {
-                        "role"=>"Admin",
-                        "name"=>"Sandy",
-                        "id"=>12
-                    },
-                    {
-                        "role"=>"Supervisor",
-                        "name"=>"Joe",
-                        "id"=>34
-                    }
-                ]
+              "product"           => "ES9231902434113168967688",
+              "type"              => "loan",
+              "balance"           => -91.99,
+              "countable_balance" => -86.71,
+              "arranged_balance"  => -99.13,
+              "currency"          => "USD",
+              "description"       => "A loan",
+              "iban"              => "ES9231902434113168967688",
+              "is_owner"          => 0,
+              "holders"           => [
+                {
+                  "role" => "Admin",
+                  "name" => "Sandy",
+                  "id"   => 12
+                },
+                {
+                  "role" => "Supervisor",
+                  "name" => "Joe",
+                  "id"   => 34
+                }
+              ]
             }
           ]
         )
