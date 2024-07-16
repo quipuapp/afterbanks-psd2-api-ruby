@@ -21,7 +21,7 @@ AfterbanksPSD2.servicekey = 'yourservicekey'
 Or, if you use it in a Rails application, create an initializer with this content:
 
 ```ruby
-require 'afterbanks'
+require 'afterbanks_psd2'
 
 AfterbanksPSD2.configure do |config|
   config.servicekey = 'yourservicekey'
