@@ -4,7 +4,7 @@ executors:
   gem-executor:
     working_directory: ~/tmp/afterbanks-psd2-api-ruby
     docker:
-      - image: circleci/ruby:2.6.6
+      - image: circleci/ruby:3.0.6
     environment:
       TZ: "Europe/Madrid"
 
