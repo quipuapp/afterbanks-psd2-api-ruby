@@ -93,25 +93,25 @@ module AfterbanksPSD2
 
       case code
       when 1
-        raise GenericError.new(error_info)
+        raise GenericError.new(**error_info)
       when 50
-        raise IncorrectParametersError.new(error_info)
+        raise IncorrectParametersError.new(**error_info)
       when 'C000'
-        raise GenericConsentError.new(error_info)
+        raise GenericConsentError.new(**error_info)
       when 'C001'
-        raise InvalidConsentError.new(error_info)
+        raise InvalidConsentError.new(**error_info)
       when 'C002'
-        raise ConsentWithUnfinalizedProcessError.new(error_info)
+        raise ConsentWithUnfinalizedProcessError.new(**error_info)
       when 'C003'
-        raise ProductMismatchConsentError.new(error_info)
+        raise ProductMismatchConsentError.new(**error_info)
       when 'C004'
-        raise ExpiredConsentError.new(error_info)
+        raise ExpiredConsentError.new(**error_info)
       when 'C005'
-        raise MaximumNumberOfCallsReachedConsentError.new(error_info)
+        raise MaximumNumberOfCallsReachedConsentError.new(**error_info)
       when 'T000'
-        raise GenericTransactionError.new(error_info)
+        raise GenericTransactionError.new(**error_info)
       when 'T001'
-        raise ProductMismatchTransactionError.new(error_info)
+        raise ProductMismatchTransactionError.new(**error_info)
       end
 
       nil
