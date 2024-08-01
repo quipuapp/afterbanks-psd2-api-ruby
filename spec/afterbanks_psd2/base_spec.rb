@@ -3,12 +3,8 @@ require "spec_helper"
 describe AfterbanksPSD2 do
   let(:test_api_url) {  'https://test.apipsd2.afterbanks.com' }
 
-  around do |example|
-    # Set the environment variable for the duration of the test
+  before do
     ENV['AFTERBANKS_API_URL'] = test_api_url
-    example.run
-    # Restore the original environment variable value
-    ENV['AFTERBANKS_API_URL'] = nil
   end
 
   describe "#configuration" do
@@ -245,5 +241,9 @@ describe AfterbanksPSD2 do
         Timecop.return
       end
     end
+  end
+
+  after do
+    ENV['AFTERBANKS_API_URL'] = nil
   end
 end
