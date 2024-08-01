@@ -8,7 +8,7 @@ describe AfterbanksPSD2 do
     ENV['AFTERBANKS_API_URL'] = test_api_url
     example.run
     # Restore the original environment variable value
-    ENV['AFTERBANKS_API_URL'] = ''
+    ENV['AFTERBANKS_API_URL'] = nil
   end
 
   describe "#configuration" do
