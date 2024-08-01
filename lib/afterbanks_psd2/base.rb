@@ -12,7 +12,8 @@ module AfterbanksPSD2
     end
 
     def api_call(method:, path:, params: {})
-      url = 'https://apipsd2.afterbanks.com' + path
+      api_url = ENV['AFTERBANKS_API_URL'] || 'https://apipsd2.afterbanks.com'
+      url = api_url + path
 
       request_params = { method: method, url: url }
 

@@ -1,6 +1,12 @@
 require "spec_helper"
 
 describe AfterbanksPSD2 do
+  let(:test_api_url) {  'https://test.apipsd2.afterbanks.com' }
+
+  before do
+    ENV['AFTERBANKS_API_URL'] = test_api_url
+  end
+
   describe "#configuration" do
     it "returns a Configuration instance which has an API key and a logger" do
       configuration = subject.configuration
@@ -28,7 +34,7 @@ describe AfterbanksPSD2 do
       let(:method) { :get }
 
       before do
-        stub_request(:get, "https://apipsd2.afterbanks.com/PSD2/some/endpoint?a=b&c=d&e=f")
+        stub_request(:get, "#{test_api_url}/PSD2/some/endpoint?a=b&c=d&e=f")
           .to_return(
             status:  200,
             body:    "{}",
@@ -41,7 +47,7 @@ describe AfterbanksPSD2 do
           .to receive(:log_request)
                 .with(
                   method:   :get,
-                  url:      "https://apipsd2.afterbanks.com/PSD2/some/endpoint",
+                  url:      "#{test_api_url}/PSD2/some/endpoint",
                   params:   { a: :b, c: :d, e: :f },
                   debug_id: 'abcd'
                 )
@@ -50,7 +56,7 @@ describe AfterbanksPSD2 do
           .to receive(:execute)
                 .with(
                   method:  :get,
-                  url:     "https://apipsd2.afterbanks.com/PSD2/some/endpoint",
+                  url:     "#{test_api_url}/PSD2/some/endpoint",
                   headers: {
                     params: { a: :b, c: :d, e: :f }
                   }
@@ -65,7 +71,7 @@ describe AfterbanksPSD2 do
       let(:method) { :post }
 
       before do
-        stub_request(:post, "https://apipsd2.afterbanks.com/PSD2/some/endpoint")
+        stub_request(:post, "#{test_api_url}/PSD2/some/endpoint")
           .with(
             body: {
               "a" => "b",
@@ -85,7 +91,7 @@ describe AfterbanksPSD2 do
           .to receive(:log_request)
                 .with(
                   method:   :post,
-                  url:      "https://apipsd2.afterbanks.com/PSD2/some/endpoint",
+                  url:      "#{test_api_url}/PSD2/some/endpoint",
                   params:   { a: :b, c: :d, e: :f },
                   debug_id: 'abcd'
                 )
@@ -94,7 +100,7 @@ describe AfterbanksPSD2 do
           .to receive(:execute)
                 .with(
                   method:  :post,
-                  url:     "https://apipsd2.afterbanks.com/PSD2/some/endpoint",
+                  url:     "#{test_api_url}/PSD2/some/endpoint",
                   payload: { :a => :b, :c => :d, :e => :f }
                 )
                 .and_call_original
@@ -235,5 +241,9 @@ describe AfterbanksPSD2 do
         Timecop.return
       end
     end
+  end
+
+  after do
+    ENV['AFTERBANKS_API_URL'] = nil
   end
 end
