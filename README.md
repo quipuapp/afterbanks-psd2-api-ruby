@@ -54,7 +54,6 @@ List of Error
  * `C005` -> MaximumNumberOfCallsReachedConsentError
  * `T000` -> GenericTransactionError
  * `T001` -> InvalidConsentForProductError
- * `P000` -> Error genérico con la iniciación de pagos.
 
 
 
