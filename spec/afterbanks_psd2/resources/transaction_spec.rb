@@ -537,7 +537,7 @@ describe AfterbanksPSD2::Transaction do
 
         it "raises a ConsentNotValidForProductError" do
           expect { api_call }.to raise_error(
-            an_instance_of(AfterbanksPSD2::ConsentNotValidForProductError)
+            an_instance_of(AfterbanksPSD2::InvalidConsentForProductError)
               .and having_attributes(
                 code:    'T001',
                 message: "El consentimiento no ha sido creado para el producto solicitado"
