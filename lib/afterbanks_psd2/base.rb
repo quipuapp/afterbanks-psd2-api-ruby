@@ -112,7 +112,7 @@ module AfterbanksPSD2
       when 'T000'
         raise GenericTransactionError.new(**error_info)
       when 'T001'
-        raise ProductMismatchTransactionError.new(**error_info)
+        raise InvalidConsentForProductError.new(**error_info)
       end
 
       nil

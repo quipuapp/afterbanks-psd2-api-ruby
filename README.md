@@ -41,6 +41,22 @@ TODO
 * Full usage for each resource
 * Proper explanation of the `AfterbanksPSD2:Error` and its subclasses
 
+List of Error
+------------
+
+ *    `1` -> GenericError
+ *   `50` -> IncorrectParametersError (When call API)
+ * `C000` -> GenericConsentError
+ * `C001` -> InvalidConsentError
+ * `C002` -> ConsentWithUnfinalizedProcessError
+ * `C003` -> ProductMismatchConsentError
+ * `C004` -> ExpiredConsentError
+ * `C005` -> MaximumNumberOfCallsReachedConsentError
+ * `T000` -> GenericTransactionError
+ * `T001` -> InvalidConsentForProductError
+
+
+
 About Afterbanks
 ------------
 
