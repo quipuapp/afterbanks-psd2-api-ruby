@@ -68,7 +68,7 @@ module AfterbanksPSD2
     end
   end
 
-  class ProductMismatchTransactionError < Error
+  class ConsentNotValidForProductError < Error
     def code
       'T001'
     end

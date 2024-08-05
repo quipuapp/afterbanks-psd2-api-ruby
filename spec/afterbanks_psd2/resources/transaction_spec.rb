@@ -535,9 +535,9 @@ describe AfterbanksPSD2::Transaction do
       context "which is T001 (product mismatch with the consent, transactions variant)" do
         let(:error) { 'T001' }
 
-        it "raises a ProductMismatchTransactionError" do
+        it "raises a ConsentNotValidForProductError" do
           expect { api_call }.to raise_error(
-            an_instance_of(AfterbanksPSD2::ProductMismatchTransactionError)
+            an_instance_of(AfterbanksPSD2::ConsentNotValidForProductError)
               .and having_attributes(
                 code:    'T001',
                 message: "El consentimiento no ha sido creado para el producto solicitado"
