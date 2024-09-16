@@ -17,10 +17,18 @@ module AfterbanksPSD2
         startDate:  start_date.strftime("%d-%m-%Y")
       }
 
+      # if the start_date is older than 90 days, we need to increase timeout to 2 hours
+      if start_date < Date.today << 3
+        options = {
+          timeout: 7200
+        }
+      end
+
       response, debug_id = AfterbanksPSD2.api_call(
-        method: :post,
-        path:   '/transactions/',
-        params: params
+        method:  :post,
+        path:    '/transactions/',
+        params:  params,
+        options: options
       )
 
       Response.new(

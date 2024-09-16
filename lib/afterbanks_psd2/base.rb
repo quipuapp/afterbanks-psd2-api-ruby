@@ -11,11 +11,15 @@ module AfterbanksPSD2
       yield(configuration)
     end
 
-    def api_call(method:, path:, params: {})
+    def api_call(method:, path:, params: {}, options: {})
       api_url = ENV['AFTERBANKS_API_URL'] || 'https://apipsd2.afterbanks.com'
       url = api_url + path
 
       request_params = { method: method, url: url }
+
+      if options[:timeout]
+        request_params.merge!(timeout: options[:timeout])
+      end
 
       if method == :post
         request_params.merge!(payload: params)
@@ -24,7 +28,7 @@ module AfterbanksPSD2
       end
 
       response = begin
-        RestClient::Request.execute(request_params)
+        RestClient::Request.execute(**request_params)
       rescue RestClient::BadRequest, RestClient::ExpectationFailed => bad_request
         # Check
         bad_request.response
