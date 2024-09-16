@@ -15,7 +15,11 @@ module AfterbanksPSD2
       api_url = ENV['AFTERBANKS_API_URL'] || 'https://apipsd2.afterbanks.com'
       url = api_url + path
 
-      request_params = options.merge!({ method: method, url: url })
+      request_params = { method: method, url: url }
+
+      if options[:timeout]
+        request_params.merge!(timeout: options[:timeout])
+      end
 
       if method == :post
         request_params.merge!(payload: params)
