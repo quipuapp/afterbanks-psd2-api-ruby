@@ -21,6 +21,22 @@ describe AfterbanksPSD2::Transaction do
       )
     }
 
+    context "when the start_date is older than 90 days" do
+      let(:start_date) { Date.new(2020, 1, 1) }
+
+      it "increases the timeout to 2 hours" do
+        expect(RestClient::Request).to receive(:execute).with(
+          hash_including(
+            timeout: 7200
+          )
+        ).and_return(
+          double(body: '{}', headers: { debug_id: 'acclist1234' })
+        )
+
+        api_call
+      end
+    end
+
     context "when returning data" do
       before do
         stub_request(:post, "https://apipsd2.afterbanks.com/transactions/")

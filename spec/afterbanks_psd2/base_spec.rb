@@ -65,6 +65,30 @@ describe AfterbanksPSD2 do
 
         api_call
       end
+
+      context "with timeout option" do
+        let(:api_call) {
+          subject.api_call(
+            method:  method, path: path, params: params, options: { timeout: 10 }
+          )
+        }
+
+        it "works" do
+          expect(RestClient::Request)
+            .to receive(:execute)
+                  .with(
+                    method:  :get,
+                    url:     "#{test_api_url}/PSD2/some/endpoint",
+                    headers: {
+                      params: { a: :b, c: :d, e: :f }
+                    },
+                    timeout: 10
+                  )
+                  .and_call_original
+
+          api_call
+        end
+      end
     end
 
     context "for a POST request" do
@@ -106,6 +130,28 @@ describe AfterbanksPSD2 do
                 .and_call_original
 
         api_call
+      end
+
+      context "with timeout option" do
+        let(:api_call) {
+          subject.api_call(
+            method:  method, path: path, params: params, options: { timeout: 10 }
+          )
+        }
+
+        it "works" do
+          expect(RestClient::Request)
+            .to receive(:execute)
+                  .with(
+                    method:  :post,
+                    url:     "#{test_api_url}/PSD2/some/endpoint",
+                    payload: { :a => :b, :c => :d, :e => :f },
+                    timeout: 10
+                  )
+                  .and_call_original
+
+          api_call
+        end
       end
     end
   end
