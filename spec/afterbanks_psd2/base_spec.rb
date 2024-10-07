@@ -89,6 +89,26 @@ describe AfterbanksPSD2 do
           api_call
         end
       end
+
+      context 'when the server return a timeout error' do
+        before do
+          allow(RestClient::Request)
+            .to receive(:execute) { raise RestClient::Exceptions::ReadTimeout }
+        end
+
+        it 'logs the request and raises the error' do
+          expect(subject)
+            .to receive(:log_request)
+                  .with(
+                    method: :get,
+                    url:    "#{test_api_url}/PSD2/some/endpoint",
+                    params: { a: :b, c: :d, e: :f }
+                  )
+
+          expect { api_call }
+            .to raise_error(RestClient::Exceptions::ReadTimeout)
+        end
+      end
     end
 
     context "for a POST request" do
