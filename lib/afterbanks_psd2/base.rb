@@ -32,6 +32,14 @@ module AfterbanksPSD2
       rescue RestClient::BadRequest, RestClient::ExpectationFailed => bad_request
         # Check
         bad_request.response
+      rescue RestClient::Exceptions::ReadTimeout
+        log_request(
+          method: method,
+          url:    url,
+          params: params
+        )
+
+        raise
       end
 
       debug_id = response.headers[:debug_id]
