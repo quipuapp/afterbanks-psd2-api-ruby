@@ -7,8 +7,8 @@ require 'afterbanks_psd2/version'
 Gem::Specification.new do |spec|
   spec.name          = 'afterbanks-psd2-api-ruby'
   spec.version       = AfterbanksPSD2::VERSION
-  spec.authors       = ['Albert Bellonch']
-  spec.email         = ['albert@getquipu.com']
+  spec.authors       = ['Florent Lemaitre']
+  spec.email         = ['flemaitre@sellsy.com']
 
   spec.summary       = "Ruby client for the Afterbanks' PSD2 API"
   spec.homepage      = 'https://getquipu.com'
