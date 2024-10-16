@@ -11,8 +11,8 @@ module AfterbanksPSD2
 
     def self.list(token:, products:, start_date:)
       raise ArgumentError, "Token is missing" if token.nil? || token.empty?
-      raise ArgumentError, "Products is missing" if products.nil? || products.empty?
       raise ArgumentError, "Products must be a string" unless products.is_a?(String)
+      raise ArgumentError, "Products is missing" if products.nil? || products.empty?
       raise ArgumentError, "Start date is missing" if start_date.nil? || products.empty?
       raise ArgumentError, "Start date must be a Date" unless start_date.is_a?(Date)
 

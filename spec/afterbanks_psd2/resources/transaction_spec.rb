@@ -563,11 +563,11 @@ describe AfterbanksPSD2::Transaction do
       end
     end
 
-    context "when products is missing" do
+    context "when products is nil" do
       let(:products) { nil }
 
       it "raises an ArgumentError" do
-        expect { api_call }.to raise_error(ArgumentError, "Products is missing")
+        expect { api_call }.to raise_error(ArgumentError, "Products must be a string")
       end
     end
 
