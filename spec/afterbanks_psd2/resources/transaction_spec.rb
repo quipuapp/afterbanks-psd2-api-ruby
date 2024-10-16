@@ -562,5 +562,45 @@ describe AfterbanksPSD2::Transaction do
         end
       end
     end
+
+    context "when products is missing" do
+      let(:products) { nil }
+
+      it "raises an ArgumentError" do
+        expect { api_call }.to raise_error(ArgumentError, "Products is missing")
+      end
+    end
+
+    context "when products is not a string" do
+      let(:products) { 123 }
+
+      it "raises an ArgumentError" do
+        expect { api_call }.to raise_error(ArgumentError, "Products must be a string")
+      end
+    end
+
+    context "when produts it's an empty string" do
+      let(:products) { '' }
+
+      it "raises an ArgumentError" do
+        expect { api_call }.to raise_error(ArgumentError, "Products is missing")
+      end
+    end
+
+    context "when start_date is missing" do
+      let(:start_date) { nil }
+
+      it "raises an ArgumentError" do
+        expect { api_call }.to raise_error(ArgumentError, "Start date is missing")
+      end
+    end
+
+    context "when start_date is not a Date" do
+      let(:start_date) { '2020-03-24' }
+
+      it "raises an ArgumentError" do
+        expect { api_call }.to raise_error(ArgumentError, "Start date must be a Date")
+      end
+    end
   end
 end

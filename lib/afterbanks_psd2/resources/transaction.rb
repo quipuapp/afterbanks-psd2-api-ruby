@@ -10,12 +10,20 @@ module AfterbanksPSD2
                account:        { type: :afterbankspsd2_account }
 
     def self.list(token:, products:, start_date:)
+      raise ArgumentError, "Token is missing" if token.nil? || token.empty?
+      raise ArgumentError, "Products is missing" if products.nil? || products.empty?
+      raise ArgumentError, "Products must be a string" unless products.is_a?(String)
+      raise ArgumentError, "Start date is missing" if start_date.nil? || products.empty?
+      raise ArgumentError, "Start date must be a Date" unless start_date.is_a?(Date)
+
       params = {
         servicekey: AfterbanksPSD2.configuration.servicekey,
         token:      token,
         products:   products,
         startDate:  start_date.strftime("%d-%m-%Y")
       }
+
+      options = {}
 
       # if the start_date is older than 90 days, we need to increase timeout to 2 hours
       if start_date < Date.today << 3
@@ -46,7 +54,7 @@ module AfterbanksPSD2
 
     def self.transactions_information_for(response:, products:)
       transactions_information = []
-      products_array = products.split(",")
+      products_array = products.to_s.split(",").map(&:strip)
 
       response.each do |account_information|
         product = account_information['product']
