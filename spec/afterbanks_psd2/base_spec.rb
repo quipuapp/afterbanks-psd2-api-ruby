@@ -90,6 +90,29 @@ describe AfterbanksPSD2 do
         end
       end
 
+      context "with null options" do
+        let(:api_call) {
+          subject.api_call(
+            method: method, path: path, params: params, options: nil
+          )
+        }
+
+        it "works" do
+          expect(RestClient::Request)
+            .to receive(:execute)
+                  .with(
+                    method:  :get,
+                    url:     "#{test_api_url}/PSD2/some/endpoint",
+                    headers: {
+                      params: { a: :b, c: :d, e: :f }
+                    }
+                  )
+                  .and_call_original
+
+          api_call
+        end
+      end
+
       context 'when the server return a timeout error' do
         before do
           allow(RestClient::Request)

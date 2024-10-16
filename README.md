@@ -33,6 +33,7 @@ You can set a `logger` as well.
 Changelog
 ---------
 
+* 0.1.1 Fix options parameters to ensure not null and check other parameters on Transaction.list
 * 0.1.0 First full version, including resource wrapping (banks, user, accounts, transactions), error coverage and support for logging
 
 TODO
