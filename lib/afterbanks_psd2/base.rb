@@ -127,6 +127,8 @@ module AfterbanksPSD2
         raise GenericTransactionError.new(**error_info)
       when 'T001'
         raise InvalidConsentForProductError.new(**error_info)
+      when 'P000'
+        raise AccountNotFoundError.new(**error_info)
       end
 
       nil
