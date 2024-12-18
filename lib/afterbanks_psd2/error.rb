@@ -73,4 +73,10 @@ module AfterbanksPSD2
       'T001'
     end
   end
+
+  class AccountNotFoundError < Error
+    def code
+      'P000'
+    end
+  end
 end

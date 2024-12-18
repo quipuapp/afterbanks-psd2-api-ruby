@@ -287,6 +287,20 @@ describe AfterbanksPSD2::Account do
               )
           )
         end
+
+        context 'wich is P000 (Account not found)' do
+          let(:error) { 'P000' }
+
+          it "raises a AccountNotFoundError" do
+            expect { api_call }.to raise_error(
+              an_instance_of(AfterbanksPSD2::AccountNotFoundError)
+                .and having_attributes(
+                  code:    'P000',
+                  message: 'Account not found.'
+                )
+            )
+          end
+        end
       end
     end
   end
